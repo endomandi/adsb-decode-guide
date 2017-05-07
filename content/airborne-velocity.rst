@@ -90,21 +90,21 @@ The Speed (v) and heading (h) with unit `knot` and `degree` can be computed as f
 
   V_{we} =
   \begin{cases}
-   -1 \cdot (V_{ew} - 1)    & \text{if } s_{ew} = 1 \\
-   V_{ew} - 1         & \text{if } s_{ew} = 0
+    -1 \cdot \left(V_{ew} - 1\right)   & \text{if } s_{ew} = 1 \\
+    V_{ew} - 1                         & \text{if } s_{ew} = 0
   \end{cases}
 
 .. math::
 
   V_{sn} =
   \begin{cases}
-   -1 \cdot (V_{ns} - 1)    & \text{if } s_{ns} = 1 \\
-   V_{ns} - 1         & \text{if } s_{ns} = 0
+    -1 \cdot \left(V_{ns} - 1\right)   & \text{if } s_{ns} = 1 \\
+    V_{ns} - 1                         & \text{if } s_{ns} = 0
   \end{cases}
 
 .. math::
 
-  v = \sqrt{V_{we}^{2} + V_{sn}^{2}}
+  v = \sqrt{V_{we}^2 + V_{sn}^2}
 
 .. math::
 
@@ -147,7 +147,7 @@ The actual vertical rate ``Vr`` is the value of bits 70-78, minus 1, and then mu
 ::
 
   Vr-bits: 000001110 = 14
-  Vr: (14 - 1) x 64 => 832 fpm
+  Vr: (14 - 1) · 64 => 832 fpm
   S-Vr: 0 => Down / Descending
 
 
@@ -231,13 +231,13 @@ Heading
 
 .. math::
 
-  heading = Decimal(Hdg) / 1024 * 360^o
+  heading = \frac{Decimal(Hdg)}{1024} \cdot 360^o
 
 in our example
 ::
 
   1010110110 -> 694
-  heading = 694 / 1024 * 360 = 243.98 (degree)
+  heading = (694 / 1024) \cdot 360 = 243.98 (degree)
 
 
 Velocity (Airspeed)
