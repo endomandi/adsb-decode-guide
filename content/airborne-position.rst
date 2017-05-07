@@ -133,9 +133,9 @@ Then we can use the following equations to compute the relative latitudes:
 
 .. math::
 
-  Lat_{even} &= dLat_{even} \cdot (mod(j, 60) + Lat_{cprEven})
+  Lat_{even} &= dLat_{even} \cdot \left(mod\left(j, 60\right) + Lat_{cprEven}\right)
 
-  Lat_{odd} &= dLat_{odd} \cdot (mod(j, 59) + Lat_{cprOdd})
+  Lat_{odd} &= dLat_{odd} \cdot \left(mod\left(j, 59\right) + Lat_{cprOdd}\right)
 
 For southern hemisphere, values will fall from 270 to 360 degrees. we need to
 make sure the latitude is within range ``[-90, +90]``:
@@ -154,8 +154,8 @@ used:
 
   Lat =
   \begin{cases}
-   Lat_{even}     & \text{if } (T_{even} \geq T_{odd}) \\
-   Lat_{odd}     & \text{else}
+   Lat_{even}    & \text{if } (T_{even} \geq T_{odd}) \\
+   Lat_{odd}     & \text{otherwise}
   \end{cases}
 
 In the example:
@@ -180,26 +180,26 @@ If the even frame come latest ``T_EVEN > T_ODD``:
 
 .. math::
 
-  ni &= max \left( NL(Lat_{even}), 1 \right)
+  ni &= max \left( NL\left(Lat_{even}\right), 1 \right)
 
   dLon &= \frac{360}{ni}
 
-  m &= floor \left( Lon_{cprEven} \cdot [NL(Lat_{even})-1] - Lon_{cprOdd} \cdot NL(Lat_{even}) + \frac{1}{2}  \right)
+  m &= floor \left( Lon_{cprEven} \cdot \left[NL(Lat_{even}) - 1\right] - Lon_{cprOdd} \cdot NL\left(Lat_{even}\right) + \frac{1}{2} \right)
 
-  Lon &= dLon \cdot \left( mod(m, ni) + Lon_{cprEven} \right)
+  Lon &= dLon \cdot \left( mod\left(m, ni\right) + Lon_{cprEven} \right)
 
 
 In case where the odd frame come latest ``T_EVEN < T_ODD``:
 
 .. math::
 
-  ni &= max \left( NL(Lat_{odd})-1, 1 \right)
+  ni &= max \left( NL\left(Lat_{odd}\right) - 1, 1 \right)
 
   dLon &= \frac{360}{ni}
 
-  m &= floor \left( Lon_{cprEven} \cdot [NL(Lat_{odd})-1] - Lon_{cprOdd} \cdot NL(Lat_{odd}) + \frac{1}{2}  \right)
+  m &= floor \left( Lon_{cprEven} \cdot \left[NL\left(Lat_{odd}) - 1\right] - Lon_{cprOdd} \cdot NL\left(Lat_{odd}\right) + \frac{1}{2} \right)
 
-  Lon &= dLon \cdot \left( mod(m, ni) + Lon_{cprOdd} \right)
+  Lon &= dLon \cdot \left( mod\left(m, ni\right) + Lon_{cprOdd} \right)
 
 
 if the result is larger than 180 degrees:
@@ -243,14 +243,14 @@ The final altitude value will be:
 
 .. math::
 
-  Alt = N * 25 - 1000 \text { (ft.)}
+  Alt = N \cdot 25 - 1000 \text { (ft)}
 
 In this example, the altitude at which aircraft is flying is:
 ::
 
-  1560 * 25 - 1000 = 38000 ft.
+  1560 · 25 - 1000 = 38000 ft
 
-Note that the altitude has the accuracy of +/- 25 ft when the Q-bit is 1, and the value can represent altitude from -1000 to +50175 ft.
+Note that the altitude has the accuracy of ±25 ft when the Q-bit is 1, and the value can represent altitude from -1000 to +50175 ft.
 
 
 
@@ -294,7 +294,7 @@ Calculate the latitude index j
 
 .. math::
 
-  j = floor(\frac{Lat_{ref}}{dLat}) + floor \left( \frac{mod(Lat_{ref}, dLat)}{dLat}  - Lat_{cpr}  + \frac{1}{2} \right)
+  j = floor\left(\frac{Lat_{ref}}{dLat}\right) + floor \left( \frac{mod\left(Lat_{ref}, dLat\right)}{dLat}  - Lat_{cpr} + \frac{1}{2} \right)
 
 
 
@@ -303,7 +303,7 @@ Calculate latitude
 
 .. math::
 
-  Lat = dLat \cdot (j + Lat_{cpr})
+  Lat = dLat \cdot \left(j + Lat_{cpr}\right)
 
 
 
@@ -324,7 +324,7 @@ Calculate longitude index m
 
 .. math::
 
-  m = floor(\frac{Lon_{ref}}{dLon}) + floor \left( \frac{mod(Lon_{ref}, dLon)}{dLon}  - Lon_{cpr}  + \frac{1}{2}  \right)
+  m = floor\left(\frac{Lon_{ref}}{dLon}\right) + floor \left( \frac{mod\left(Lon_{ref}, dLon\right)}{dLon}  - Lon_{cpr}  + \frac{1}{2}  \right)
 
 
 Calculate longitude
@@ -332,7 +332,7 @@ Calculate longitude
 
 .. math::
 
-  Lon = dLon \cdot (m + Lon_{cpr})
+  Lon = dLon \cdot \left(m + Lon_{cpr}\right)
 
 
 Example
