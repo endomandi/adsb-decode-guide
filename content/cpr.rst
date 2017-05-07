@@ -46,7 +46,7 @@ Number of geographic latitude zones between equator and a pole. It is set to ``N
 floor(x)
 ********
 
-the floor function ``floor(x)`` defines as the greatest integer value k, such that ``k<=x``, for example:
+the floor function ``floor(x)`` defines as the greatest integer value k, such that ``k <= x``, for example:
 ::
 
   floor(5.6) = 5
@@ -60,7 +60,7 @@ the modulus function ``mod(x, y)`` return:
 
 .. math::
 
-  x - y \cdot floor(\frac{x}{y})
+  x - y \cdot floor\left(\frac{x}{y}\right)
 
 where ``y`` can not be zero
 
